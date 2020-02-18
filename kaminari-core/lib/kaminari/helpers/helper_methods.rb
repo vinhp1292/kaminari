@@ -113,6 +113,7 @@ module Kaminari
         options.reverse_merge! current_page: scope.current_page, per_page: scope.limit_value, remote: false
 
         paginator = paginator_class.new (template || self), **options
+        paginator.output_buffer = ActionView::OutputBuffer.new
         paginator.to_s
       end
 
